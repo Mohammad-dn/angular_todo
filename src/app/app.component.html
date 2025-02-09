@@ -1,17 +1,10 @@
-<main class="main flex-col gap-40 flex justify-center items-center">
-	<app-header></app-header>
-	<div>children</div>
-	<app-footer></app-footer>
-	<div>hello {{ name }}</div>
+<main class="main flex-col flex justify-center items-center">
+	
+	<app-header (onCaptionClick)="handleShowAlert($event)"></app-header>
+	<span >
+		{{message}}
+	</span>
 
-	<input type="text" />
-
-	<button
-		class="bg-blue-500 rounded-lg px-4 py-2"
-		(mousedown)="handleMouseEnter($event)"
-	>
-		hellow
-	</button>
 </main>
 
 <router-outlet />

@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 @Component({
 	selector: "app-footer",
@@ -6,10 +7,15 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./footer.component.scss"],
 	standalone: true,
 	providers: [],
-	imports: [],
+	imports: [FormsModule],
 })
 export class FooterComponent implements OnInit {
-	constructor() {}
+	inputMessage: any;
 
+	@Output() messageEvent = new EventEmitter<string>();
+
+	sendMessage() {
+		this.messageEvent.emit(this.inputMessage);
+	}
 	ngOnInit(): void {}
 }

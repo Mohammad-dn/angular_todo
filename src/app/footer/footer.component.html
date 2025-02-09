@@ -1,3 +1,11 @@
 <div>
 	<h1>footer</h1>
+	<input type="text" [(ngModel)]="inputMessage">
+	
+	<span>{{inputMessage}}</span>
+	<button (click)="sendMessage()">
+		sned message to parent
+	</button>
+
+
 </div>
