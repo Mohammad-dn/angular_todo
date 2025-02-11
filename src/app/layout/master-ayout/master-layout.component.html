@@ -1,4 +1,36 @@
-<header class="h-52 bg-slate-300">header</header>
-<router-outlet></router-outlet>
-
-<header class="h-52 bg-slate-300">footer</header>
+<mat-drawer-container
+	hasBackdrop="true"
+	class="example-container w-full h-screen"
+	autosize
+>
+	<mat-drawer #drawer class="example-sidenav" mode="over">
+		im a drawer</mat-drawer
+	>
+	<mat-drawer-content>
+		<div class="w-full flex flex-col justify-between"></div>
+		<mat-toolbar class="w-full flex">
+			<button type="button" mat-button (click)="drawer.toggle()">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<span>Todo</span>
+			<button
+				mat-icon-button
+				class="example-icon favorite-icon"
+				aria-label="Example icon-button with heart icon"
+			>
+				<mat-icon>favorite</mat-icon>
+			</button>
+			<button
+				mat-icon-button
+				class="example-icon"
+				aria-label="Example icon-button with share icon"
+			>
+				<mat-icon>share</mat-icon>
+			</button>
+		</mat-toolbar>
+		<div class="flex-1 p-6 overflow-y-auto overflow-x-hidden">
+			<router-outlet></router-outlet>
+		</div>
+		<header class="h-52 bg-slate-300">footer</header>
+	</mat-drawer-content>
+</mat-drawer-container>
