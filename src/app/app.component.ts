@@ -1,18 +1,35 @@
-import { Component } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { JsonPipe } from "@angular/common";
+import { Component, inject } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
-import { FooterComponent } from "./footer/footer.component";
-import { HeaderComponent } from "./header/header.component";
+import { LocalStorageService } from "./services/localStorage.service";
+import { TodoService } from "./services/todo.service";
+
 @Component({
 	selector: "app-root",
-	imports: [RouterOutlet, FooterComponent, HeaderComponent, FormsModule],
+	imports: [RouterOutlet, JsonPipe],
 	templateUrl: "./app.component.html",
 	styleUrl: "./app.component.scss",
+	providers: [LocalStorageService],
 })
 export class AppComponent {
-	message: string = "";
+	localStorageService = inject(LocalStorageService);
+	todoService: TodoService = inject(TodoService);
 
-	handleShowAlert(e: any) {
-		alert("show allert in app component");
+	user: any;
+
+	constructor() {
+		this.handleGEtDataFromLocalStorage();
+		this.todoService.getTodo(1);
+	}
+
+	handleSetUserData() {
+		this.localStorageService.set("USER", {
+			name: "ali",
+			age: 30,
+		});
+	}
+
+	handleGEtDataFromLocalStorage() {
+		this.user = this.localStorageService.get("USER");
 	}
 }

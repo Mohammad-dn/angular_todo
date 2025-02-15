@@ -1,10 +1,18 @@
-<main class="main flex-col flex justify-center items-center">
-	
-	<app-header (onCaptionClick)="handleShowAlert($event)"></app-header>
-	<span >
-		{{message}}
-	</span>
+<main class="flex flex-col justify-center items-center">
+
+  <button (click)="handleSetUserData()">click to save user data</button>
+
+  <button class="text-2xl border border-blue-400 rounded-2xl px-4 py-2 " (click)="handleGEtDataFromLocalStorage()">
+    get data from local storage
+  </button>
+
+  <pre>
+
+
+  {{ user | json }}
+
+  </pre>
 
 </main>
 
-<router-outlet />
+<router-outlet/>
